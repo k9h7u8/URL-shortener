@@ -1,13 +1,15 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const ShortUrl = require('./models/shortUrls');
-require('dotenv').config();
 
 const app = express();
 
+const dotenv = require('dotenv').config();
 mongoose.connect(process.env.MONGODB_URI, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
+}, () => {
+    console.log("Connected to MongoDB Database");
 })
 
 app.set('view engine', 'ejs');
