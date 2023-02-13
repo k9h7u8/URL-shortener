@@ -1,13 +1,14 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const ShortUrl = require('./models/shortUrls');
+const dotenv = require('dotenv').config();
 
 const app = express();
 
-const dotenv = require('dotenv').config();
-mongoose.connect(process.env.MONGODB_URI, {
-}, () => {
+mongoose.connect(process.env.MONGODB_URI_CLOUD).then(() => {
     console.log("Connected to MongoDB Database");
+}).catch(error => {
+    console.log(`No Connection`);
 })
 
 app.set('view engine', 'ejs');
