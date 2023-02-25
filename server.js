@@ -8,7 +8,7 @@ const app = express();
 mongoose.connect(process.env.MONGODB_URI_CLOUD).then(() => {
     console.log("Connected to MongoDB Database");
 }).catch(error => {
-    console.log(`No Connection`);
+    console.log(`No Connection ${error}`);
 })
 
 app.set('view engine', 'ejs');
