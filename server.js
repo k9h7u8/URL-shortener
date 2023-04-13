@@ -1,11 +1,11 @@
 const express = require('express');
 const mongoose = require('mongoose');
+mongoose.set("strictQuery", true);
 const ShortUrl = require('./models/shortUrls');
 const dotenv = require('dotenv').config();
 
 const app = express();
 mongoose.connect(process.env.MONGODB_URI_CLOUD).then(() => {
-    console.log(process.env.MONGODB_URI_CLOUD);
     console.log("Connected to MongoDB Database");
 }).catch(error => {
     console.log(`No Connection ${error}`);
